@@ -8,7 +8,7 @@
  */
 int isInRange(int coord, int offset, int size) {
   // if coord is in range, return 1
-  if (coord >= offset && coord < (offset + size)) {
+  if (coord >= offset && coord <= (offset + size)) {
     return 1;
   }
   // else, return 0
@@ -53,10 +53,10 @@ void squares(int size1, int x_offset, int y_offset, int size2) {
   }
 
   //loop through and print
-  for (int y = 0; y <= h; y++) {
-    for (int x = 0; x <= w; x++) {
-      if ((isInRange(x, x_offset, size2) && isAtBorder(y, y_offset, (size2-1))) ||
-	  (isInRange(y, y_offset, size2) && isAtBorder(x, x_offset, (size2-1))))
+  for (int y = 0; y < h; y++) {
+    for (int x = 0; x < w; x++) {
+      if ((isInRange(x, x_offset, (size2-1)) && isAtBorder(y, y_offset, (size2-1))) ||
+	  (isInRange(y, y_offset, (size2-1)) && isAtBorder(x, x_offset, (size2-1))))
 	{
 	  printf("*");
 	}
