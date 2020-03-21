@@ -40,7 +40,14 @@ rectangle canonicalize(rectangle r) {
 }
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
-  return r1;
+  int right = min((r1.x + r1.width),(r2.x + r2.width));
+  int top = min((r1.y + r1.height),(r2.y + r2.height));
+  rectangle i;
+  i.x = max(r1.x, r2.x);
+  i.y = max(r1.y, r2.y);
+  i.width = right - i.x;
+  i.height = top - i.y;
+  return i;
 }
 
 //You should not need to modify any code below this line
