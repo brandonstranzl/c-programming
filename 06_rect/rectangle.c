@@ -43,6 +43,9 @@ rectangle canonicalize(rectangle r) {
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
 
+  //testing
+  //printf("\n testing compile in emacs with ctrl c ctrl v");
+
   r1 = canonicalize(r1);  
   r2 = canonicalize(r2);
   
@@ -77,6 +80,8 @@ void printRectangle(rectangle r) {
 }
 
 int main (void) {
+  //  printf("testing new makefile \n");
+
   rectangle r1;
   rectangle r2;
   rectangle r3;
