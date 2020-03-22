@@ -43,15 +43,8 @@ rectangle canonicalize(rectangle r) {
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
 
-  //printf("\n begin intersection function \n");
-  
-  r1 = canonicalize(r1);
-  //printf("testing print canonacalized r1 \n");
-  //printf("%d, %d, %d, %d, \n", r1.x, r1.y, r1.width, r1.height);
-    
+  r1 = canonicalize(r1);  
   r2 = canonicalize(r2);
-  //printf("testing print canonacalized r2\n");
-  //printf("%d, %d, %d, %d, \n", r2.x, r2.y, r2.width, r2.height);
   
   int right = min((r1.x + r1.width),(r2.x + r2.width));
   //printf("right = %d \n", right);
@@ -60,8 +53,14 @@ rectangle intersection(rectangle r1, rectangle r2) {
   rectangle i;
   i.x = max(r1.x, r2.x);
   i.y = max(r1.y, r2.y);
-  i.width = right - i.x;
-  i.height = top - i.y;
+  if ((right - i.x) < 0 || (top - i.y) < 0) {
+    i.width = 0;
+    i.height = 0;
+  }
+  else {
+  i.width = (right - i.x);
+  i.height = (top - i.y);
+  }
   return i;
 }
 
