@@ -1,4 +1,4 @@
- For this problem, you will be writing a "retirement savings" calculator.
+For this problem, you will be writing a "retirement savings" calculator.
  We'll remove the effects of inflation by keeping everything in 
  "today's dollars" and using a "Rate of return" that is in terms of
  "more than inflation."
