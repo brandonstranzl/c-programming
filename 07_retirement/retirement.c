@@ -1,39 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
 
 struct retire_info_t {
   int months;
   double contribution;
-  double rate_of_return;
+  double rate;
 };
   
 typedef struct retire_info_t retire_info;
-*/
 
-void print_balance(double beg, int periods, double pmt, double rate, int age) {
-
-  printf("hello");
-  
-  //  int beginning_balance = beg;
-  int number_of_periods = periods;
-  // int  payment = pmt;
-  //int = rate;
- 
-
-  for (int i = 0; i < number_of_periods; i++) {
-    int months = age + i; 
-    int years = (months / 12);
-    printf("Age %3d month %2d you have $.21f\n", years, months%12);
+void print_balance(
+		int beg_age,
+		double  beg_bal,
+		retire_info working,
+		retire_info retirement) {
+  printf("*******hello********* \n");
+  for (int i = 0; i < working.months; i++) {
+    //double balance = beg_bal; 
+    int months = (beg_age + i) % 12; 
+    int years = ((beg_age + i) / 12);
+    printf("Age %3d month %2d you have $%.2lf\n", years, months, beg_bal);
+    beg_bal = (beg_bal * (1 + (working.rate / 12))) + working.contribution;
   }
-
-
 }
-	   
-  //void retirement(int startAge, double initial, retire_info working, retire_info retired) { print_balance(working);
-
 
 int main(void) {
-  print_balance(1000,24,100,.05,36);
+
+  retire_info working;
+  working.months = 36;
+  working.contribution = 100;
+  working.rate = .00;
+
+  retire_info retirement;
+  retirement.months = 36;
+  retirement.contribution = -100;
+  retirement.rate = .01;
+    
+  int beg_age = 327;
+  double beg_bal = 21345;
+
+  print_balance(beg_age, beg_bal, working, retirement);
+    
 }
