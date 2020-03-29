@@ -50,5 +50,6 @@ int main(void) {
   double initial = 21345;
   
   retirement(startAge, initial, working, retired);
- 
+
+  return 0;
 }
