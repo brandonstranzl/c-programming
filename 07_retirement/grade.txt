@@ -1,18 +1,15 @@
-Grading at Sun Mar 29 16:15:26 UTC 2020
+Grading at Sun Mar 29 16:37:50 UTC 2020
 Attempting to compile retirement.c
 Checking for struct _retire_info
-not found
+Found on line 5, column 1 
 Checking for field int months
-not found
+Found on line 6, column 3 
 Checking for field double contribution
-not found
+Found on line 7, column 3 
 Checking for field double rate_of_return
-not found
+Found on line 8, column 3 
 Checking for typedef of struct _retire_info to retire_info
-You have a typedef for retire_info, but it is : 
-typedef struct retire_info_t retire_info;
-where I instead expected you to define it to struct _retire_info
-not found
+Found on line 11, column 1 
 Checking for void retirement (int startAge, double initial,  retire_info working,  retire_info retired)
 not found
 Checking for int main(void)
