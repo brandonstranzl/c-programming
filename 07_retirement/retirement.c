@@ -10,7 +10,7 @@ struct _retire_info {
   
 typedef struct _retire_info retire_info;
 
-void print_balance(
+void retirement(
 		int startAge,
 		double initial,
 		retire_info working,
@@ -49,7 +49,7 @@ int main(void) {
   int startAge = 327;
   double initial = 21345;
   
-  print_balance(startAge, initial, working, retired);
+  retirement(startAge, initial, working, retired);
 
   //  printf("\n ** months working %d ** \n", working.months);
   //printf("\n ** years working %d ** \n", (working.months / 12));
