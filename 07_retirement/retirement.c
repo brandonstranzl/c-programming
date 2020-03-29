@@ -50,9 +50,5 @@ int main(void) {
   double initial = 21345;
   
   retirement(startAge, initial, working, retired);
-
-  //  printf("\n ** months working %d ** \n", working.months);
-  //printf("\n ** years working %d ** \n", (working.months / 12));
-  //printf("\n ** retirement age %d  ** \n",(working.months / 12) + (beg_age /12));
-  
+ 
 }
