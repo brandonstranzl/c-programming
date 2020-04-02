@@ -1,0 +1,161 @@
+Hand 1:
+--------
+0c 0s 8s 7d 6d 6s 5c 
+ - No flush
+ - The most of a kind is 2 of a kind (at index 0 / value 0)
+ - Secondary pair at index 4 (value 6)
+ - evaluate_hand's ranking: TWO_PAIR
+ - 5 cards used for hand: 0c 0s 6d 6s 8s 
+Hand 2:
+--------
+Js 0s 8s 7d 6s 5c 4c 
+ - No flush
+ - Straight at index 2
+ - The most of a kind is 1 of a kind (at index 0 / value J)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 8s 7d 6s 5c 4c 
+Hand 1 is 0c 0s 8s 7d 6d 6s 5c which is a TWO_PAIR [0c 0s 6d 6s 8s ]
+Hand 2 is Js 0s 8s 7d 6s 5c 4c which is a STRAIGHT [8s 7d 6s 5c 4c ]   {Hand 2 wins: ranking} 
+Comparison : 
+--------------
+Hand 2 wins!
+============================
+Hand 1:
+--------
+Ad 9s 7c 5d 4s 3s 2c 
+ - No flush
+ - Straight at index 0
+ - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 5d 4s 3s 2c Ad 
+Hand 2:
+--------
+0c 9c 6s 5d 4s 3s 2s 
+ - No flush
+ - Straight at index 2
+ - The most of a kind is 1 of a kind (at index 0 / value 0)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 6s 5d 4s 3s 2s 
+Hand 1 is Ad 9s 7c 5d 4s 3s 2c which is a STRAIGHT [5d 4s 3s 2c Ad ]
+Hand 2 is 0c 9c 6s 5d 4s 3s 2s which is a STRAIGHT [6s 5d 4s 3s 2s ]   {Hand 2 wins: 0 card} 
+Comparison : 
+--------------
+Hand 2 wins!
+============================
+Hand 1:
+--------
+Ad Ks 5d 4c 4s 3s 2c 
+ - No flush
+ - Straight at index 0
+ - The most of a kind is 2 of a kind (at index 3 / value 4)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 5d 4c 3s 2c Ad 
+Hand 2:
+--------
+9c 6s 5d 4c 4s 3s 2s 
+ - No flush
+ - Straight at index 1
+ - The most of a kind is 2 of a kind (at index 3 / value 4)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 6s 5d 4c 3s 2s 
+Hand 1 is Ad Ks 5d 4c 4s 3s 2c which is a STRAIGHT [5d 4c 3s 2c Ad ]
+Hand 2 is 9c 6s 5d 4c 4s 3s 2s which is a STRAIGHT [6s 5d 4c 3s 2s ]   {Hand 2 wins: 0 card} 
+Comparison : 
+--------------
+Hand 2 wins!
+============================
+Hand 1:
+--------
+Ad Ks 5d 4c 4s 3s 2c 
+ - No flush
+ - Straight at index 0
+ - The most of a kind is 2 of a kind (at index 3 / value 4)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT
+ - 5 cards used for hand: 5d 4c 3s 2c Ad 
+Hand 2:
+--------
+9c 8d 5s 4c 2s 
+ - No flush
+ - The most of a kind is 1 of a kind (at index 0 / value 9)
+ - No secondary pair
+ - evaluate_hand's ranking: NOTHING
+ - 5 cards used for hand: 9c 8d 5s 4c 2s 
+Hand 1 is Ad Ks 5d 4c 4s 3s 2c which is a STRAIGHT [5d 4c 3s 2c Ad ]
+Hand 2 is 9c 8d 5s 4c 2s which is a NOTHING [9c 8d 5s 4c 2s ]   {Hand 1 wins: ranking} 
+Comparison : 
+--------------
+Hand 1 wins!
+============================
+Hand 1:
+--------
+As 9h 7d 5s 4s 3s 2s 
+ - Flush in suit s
+ - Straight flush at index 0
+ - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH
+ - 5 cards used for hand: 5s 4s 3s 2s As 
+Hand 2:
+--------
+Kc Qc 8d 6s 5c 
+ - No flush
+ - The most of a kind is 1 of a kind (at index 0 / value K)
+ - No secondary pair
+ - evaluate_hand's ranking: NOTHING
+ - 5 cards used for hand: Kc Qc 8d 6s 5c 
+Hand 1 is As 9h 7d 5s 4s 3s 2s which is a STRAIGHT_FLUSH [5s 4s 3s 2s As ]
+Hand 2 is Kc Qc 8d 6s 5c which is a NOTHING [Kc Qc 8d 6s 5c ]   {Hand 1 wins: ranking} 
+Comparison : 
+--------------
+Hand 1 wins!
+============================
+Hand 1:
+--------
+Qd Jc 0d 9c 7c 5c 3c 
+ - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value Q)
+ - No secondary pair
+ - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Jc 9c 7c 5c 3c 
+Hand 2:
+--------
+9c 7c 6s 4d 4s 2s 
+ - No flush
+ - The most of a kind is 2 of a kind (at index 3 / value 4)
+ - No secondary pair
+ - evaluate_hand's ranking: PAIR
+ - 5 cards used for hand: 4d 4s 9c 7c 6s 
+Hand 1 is Qd Jc 0d 9c 7c 5c 3c which is a FLUSH [Jc 9c 7c 5c 3c ]
+Hand 2 is 9c 7c 6s 4d 4s 2s which is a PAIR [4d 4s 9c 7c 6s ]   {Hand 1 wins: ranking} 
+Comparison : 
+--------------
+Hand 1 wins!
+============================
+Hand 1:
+--------
+Qd Jc 0c 9c 7c 5c 3c 
+ - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value Q)
+ - No secondary pair
+ - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Jc 0c 9c 7c 5c 
+Hand 2:
+--------
+0s 9s 7c 6s 4s 3c 2s 
+ - Flush in suit s
+ - The most of a kind is 1 of a kind (at index 0 / value 0)
+ - No secondary pair
+ - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: 0s 9s 6s 4s 2s 
+Hand 1 is Qd Jc 0c 9c 7c 5c 3c which is a FLUSH [Jc 0c 9c 7c 5c ]
+Hand 2 is 0s 9s 7c 6s 4s 3c 2s which is a FLUSH [0s 9s 6s 4s 2s ]   {Hand 1 wins: 0 card} 
+Comparison : 
+--------------
+Hand 1 wins!
+============================
