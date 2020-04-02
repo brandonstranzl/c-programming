@@ -20,7 +20,7 @@ const char * ranking_to_string(hand_ranking_t r) {
   case TWO_PAIR: return "TWO_PAIR";
   case PAIR: return "PAIR";
   case NOTHING: return "NOTHING";
-  default: return "Nada";
+  default: return "???";
   }
 }
 
@@ -61,30 +61,30 @@ void print_card(card_t c) {
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
-  card_t c;
+  card_t temp;
   switch (value_let) {
-  case '2': c.value = 2; break;
-  case '3': c.value = 3; break;
-  case '4': c.value = 4; break;
-  case '5': c.value = 5; break;
-  case '6': c.value = 6; break;  
-  case '7': c.value = 7; break;
-  case '8': c.value = 8; break;
-  case '9': c.value = 9; break;
-  case '0': c.value = 10; break;
-  case 'J': c.value = VALUE_JACK; break;
-  case 'Q': c.value = VALUE_QUEEN; break;
-  case 'K': c.value = VALUE_KING; break;
-  case 'A': c.value = VALUE_ACE; break;
+  case '2': temp.value = 2; break;
+  case '3': temp.value = 3; break;
+  case '4': temp.value = 4; break;
+  case '5': temp.value = 5; break;
+  case '6': temp.value = 6; break;  
+  case '7': temp.value = 7; break;
+  case '8': temp.value = 8; break;
+  case '9': temp.value = 9; break;
+  case '0': temp.value = 10; break;
+  case 'J': temp.value = VALUE_JACK; break;
+  case 'Q': temp.value = VALUE_QUEEN; break;
+  case 'K': temp.value = VALUE_KING; break;
+  case 'A': temp.value = VALUE_ACE; break;
   }
   switch (suit_let) {
-  case 's': c.suit = SPADES; break;
-  case 'h': c.suit = HEARTS; break;
-  case 'd': c.suit = DIAMONDS; break;
-  case 'c': c.suit = CLUBS; break;
+  case 's': temp.suit = SPADES; break;
+  case 'h': temp.suit = HEARTS; break;
+  case 'd': temp.suit = DIAMONDS; break;
+  case 'c': temp.suit = CLUBS; break;
   }
-  assert_card_valid(c);
-  return(c);
+  assert_card_valid(temp);
+  return(temp);
 }
     
 
