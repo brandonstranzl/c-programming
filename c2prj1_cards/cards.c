@@ -47,9 +47,9 @@ char value_letter(card_t c) {
 char suit_letter(card_t c) {
   switch(c.suit) {
   case SPADES: return 's';
-  case HEARTS: return 'c';
-  case DIAMONDS: return 'h';
-  case CLUBS: return 'd';
+  case HEARTS: return 'h';
+  case DIAMONDS: return 'd';
+  case CLUBS: return 'c';
   default: return '?';  
   }
 }
