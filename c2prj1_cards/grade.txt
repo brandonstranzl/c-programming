@@ -1,47 +1,25 @@
-Grading at Thu Apr  2 01:53:06 UTC 2020
+Grading at Thu Apr  2 01:56:43 UTC 2020
 Compiling cards.c
 Testing card_from_letters
 Passed
 Testing value_letter and suit_letter
-For Kh, you gave value = K, suit = c
-For Kd, you gave value = K, suit = h
-For Kc, you gave value = K, suit = d
-For Ah, you gave value = A, suit = c
-For Ad, you gave value = A, suit = h
-For Ac, you gave value = A, suit = d
-For 2h, you gave value = 2, suit = c
-For 2d, you gave value = 2, suit = h
-For 2c, you gave value = 2, suit = d
-For 3h, you gave value = 3, suit = c
-For 3d, you gave value = 3, suit = h
-For 3c, you gave value = 3, suit = d
-For 4h, you gave value = 4, suit = c
-For 4d, you gave value = 4, suit = h
-For 4c, you gave value = 4, suit = d
-For 5h, you gave value = 5, suit = c
-For 5d, you gave value = 5, suit = h
-For 5c, you gave value = 5, suit = d
-For 6h, you gave value = 6, suit = c
-For 6d, you gave value = 6, suit = h
-For 6c, you gave value = 6, suit = d
-For 7h, you gave value = 7, suit = c
-For 7d, you gave value = 7, suit = h
-For 7c, you gave value = 7, suit = d
-For 8h, you gave value = 8, suit = c
-For 8d, you gave value = 8, suit = h
-For 8c, you gave value = 8, suit = d
-For 9h, you gave value = 9, suit = c
-For 9d, you gave value = 9, suit = h
-For 9c, you gave value = 9, suit = d
-For 0h, you gave value = 0, suit = c
-For 0d, you gave value = 0, suit = h
-For 0c, you gave value = 0, suit = d
-For Jh, you gave value = J, suit = c
-For Jd, you gave value = J, suit = h
-For Jc, you gave value = J, suit = d
-For Qh, you gave value = Q, suit = c
-For Qd, you gave value = Q, suit = h
-For Qc, you gave value = Q, suit = d
-Failed
+Passed
+Testing print_card
+Passed
+Testing card_from_num
+Passed
+Testing ranking_to_string
+ranking_to_string(STRAIGHT_FLUSH) resulted in STRAIGHT_FLUSH  (Correct)
+ranking_to_string(FOUR_OF_A_KIND) resulted in FOUR_OF_A_KIND  (Correct)
+ranking_to_string(FULL_HOUSE) resulted in FULL_HOUSE  (Correct)
+ranking_to_string(FLUSH) resulted in FLUSH  (Correct)
+ranking_to_string(STRAIGHT) resulted in STRAIGHT  (Correct)
+ranking_to_string(THREE_OF_A_KIND) resulted in THREE_OF_A_KIND  (Correct)
+ranking_to_string(TWO_PAIR) resulted in TWO_PAIR  (Correct)
+ranking_to_string(PAIR) resulted in PAIR  (Correct)
+ranking_to_string(NOTHING) resulted in NOTHING  (Correct)
+Passed
+Testing assert_card_valid
+Passed
 
-Overall Grade: FAILED
+Overall Grade: PASSED
