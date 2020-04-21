@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "max-seq.h"
+#include "maxSeq.h"
 
 //int maxSeq(int * array, size_t n);
 
@@ -30,7 +30,7 @@ int main(void) {
     exit(EXIT_FAILURE);
   }
   if (maxSeq(array3, 10) != 4) {
-    printf("Failed on 2,4,3,6,10,15,-1,7,8,\n");
+    printf("Failed on 2,4,3,6,10,15,-1,7,8,2 \n");
     exit(EXIT_FAILURE);
   }
   if (maxSeq(array4, 4) != 3) {
