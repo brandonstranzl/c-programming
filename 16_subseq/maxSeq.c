@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "max-seq.h"
+#include "maxSeq.h"
 
 int maxSeq(int * array, size_t n) {
   //printf("**inside maxseq**\n");
@@ -21,20 +21,17 @@ int maxSeq(int * array, size_t n) {
   for (int i=1;i<n;i++) {
     if (array[i] > array[i-1]) {
       count += 1;
-      printf("%d\n", count);
-      }
-    else {
-    if (count > max) {
+      printf("count = %d\n", count);
+      if (count > max) {
       max = count;
       printf("max  = %d\n",max);
-      count = 1;
-      printf("count = %d\n", count);
       }
     }
-    if (count > max) {
-      max = count;
-    }  
-  }
+    if (array[i] <= array[i-1]) {
+      count = 1;
+      printf("here is count reset %d\n", count);
+    }
+  }  
   printf("answer = %d \n",max);
   return max; 
 }
