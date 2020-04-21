@@ -22,7 +22,7 @@ int maxSeq(int * array, size_t n);
     } 
   }
   return max;
-}*/
+}
 
 void doTest(int * array, int n) {
   printf("maxSeq of array(");
@@ -47,18 +47,47 @@ void doTest(int * array, int n) {
   else {
     printf("%d\n", *p);
   }
-}
+}*/
 
 int main(void) {
-  int array1[] = { 77, 33, 19, 99, 42, 6, 27, 4};
-  int array2[] = { -3, -42, -99, -1000, -999, -88, -77};
-  int array3[] = { 425, 59, -3, 77, 0, 36};
-
-  doTest (array1, 8);
-  doTest (array2, 7);
-  doTest (array3, 6);
-  doTest (NULL, 0);
-  doTest (array1, 0);
+  int array1[] = { 1, 2};
+  int array2[] = { 1, 2, 3, 4};
+  int array3[] = { };
+  int array4[] = { };
+  int array5[] = { };
   
+  if (maxSeq(NULL, 0)) {
+    printf("Failed on NULL\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array1, 0)) {
+    printf("Failed on 1,2,3,2 for NULL\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array1, 4) != 3) {    
+    printf("Failed on 1,2,3,2\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array2, 5) != 4) {
+    printf("Failed on 2,-3,5,6,8\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array3, 1) != 1) {
+    printf("Failed on 5\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array4, 10) != 4) {
+    printf("Failed on 2,4,3,6,10,15,-1,7,8,2\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array5, 1) != 1) {
+    printf("Failed on -2\n");
+    exit(EXIT_FAILURE);
+  }
+  if (maxSeq(array6, 4) != 2) {
+    printf("Failed on 2,2,2,3\n");
+    exit(EXIT_FAILURE);
+  }
   return EXIT_SUCCESS;
+
 }
