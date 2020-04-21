@@ -21,15 +21,15 @@ int maxSeq(int * array, size_t n) {
   for (int i=1;i<n;i++) {
     if (array[i] > array[i-1]) {
       count += 1;
-      printf("count = %d\n", count);
+      //printf("count = %d\n", count);
       if (count > max) {
       max = count;
-      printf("max  = %d\n",max);
+      //printf("max  = %d\n",max);
       }
     }
     if (array[i] <= array[i-1]) {
       count = 1;
-      printf("here is count reset %d\n", count);
+      //printf("here is count reset %d\n", count);
     }
   }  
   printf("answer = %d \n",max);
