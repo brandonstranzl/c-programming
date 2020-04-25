@@ -4,14 +4,14 @@
 
 int maxSeq(int * array, size_t n) {
   //printf("**inside maxseq**\n");
-  for (int i=0; i<n; i++) {
-    if (i != (n-1)) {
-      printf("%d, ", array[i]);
-    }
-    if (i == (n-1)) {
-      printf("%d end\n", array[i]);
-    }
-  }
+  //for (int i=0; i<n; i++) {
+  //  if (i != (n-1)) {
+  //    printf("%d, ", array[i]);
+  //  }
+  //  if (i == (n-1)) {
+  //    printf("%d end\n", array[i]);
+  //  }
+  //}
 
   int count = 1;
   int max = 1;
@@ -21,9 +21,7 @@ int maxSeq(int * array, size_t n) {
   for (int i=1;i<n;i++) {
     if (array[i] > array[i-1]) {
       count += 1;
-      //printf("count = %d\n", count);
-    }
-    else {
+    } else {
       count = 1;
     }
     if (count > max) {
@@ -32,6 +30,7 @@ int maxSeq(int * array, size_t n) {
       }
     }  
   printf("answer = %d \n",max);
+
   return max; 
 }
   
