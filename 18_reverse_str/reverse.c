@@ -10,7 +10,11 @@ void reverse(char * str) {
     rev[j] = str[i];;
     j++;
   }
-  strncpy(str,rev,len);
+  for (int i = 0; i < len; i++) {
+    *(str+i) = rev[i];
+  }
+  //printf("%s\n", str);
+  //strncpy(str,rev,len);
 }
 
 int main(void) {
