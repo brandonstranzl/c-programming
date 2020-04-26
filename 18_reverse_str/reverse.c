@@ -3,7 +3,14 @@
 #include <string.h>
 
 void reverse(char * str) {
-  //WRITE ME!
+  int len = strlen(str);
+  char rev[len];
+  int j = 0;
+  for (int i = (len - 1); i >= 0; i--) {
+    rev[j] = str[i];;
+    j++;
+  }
+  strncpy(str,rev,len);
 }
 
 int main(void) {
