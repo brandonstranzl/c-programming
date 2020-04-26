@@ -3,6 +3,9 @@
 #include <string.h>
 
 void reverse(char * str) {
+  if (str == NULL) {
+    return;
+   }
   int len = strlen(str);
   char rev[len];
   int j = 0;
