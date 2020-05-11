@@ -1,0 +1,5 @@
+rotate-matrix: read-matrix.o
+	gcc -o rotate-matrix read-matrix.o
+
+read-matrix: rotate.c
+	gcc -o read-matrix.o rotate.c
