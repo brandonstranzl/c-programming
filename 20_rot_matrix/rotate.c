@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "rotate.h"
 
 void rotate(char matrix[10][10]) {
   char rotated[10][10];
@@ -11,4 +14,25 @@ void rotate(char matrix[10][10]) {
       matrix[i][j] = rotated[i][j];
     }
   }
+
 }
+
+/*void main(void) {
+
+char matrix[10][10] = {
+{ "0123456789" },
+{ "abcdefghij" },
+{ '*.........' },
+{ '.*........' },
+{ '..*.......' },
+{ '...*......' },
+{ '....*.....' },
+{ '.....*....' },
+{ 'HelloWorld' },
+{ 'Coding Fun' }
+};
+
+rotate(matrix[10][10]);
+
+}
+*/

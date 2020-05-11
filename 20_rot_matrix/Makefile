@@ -1,9 +1,5 @@
-CFLAGS=-I -Wall -Werror -pedantic -std=gnu99
-CC=gcc
+rotate-matrix: rotate-main.c rotate.c
+	gcc -o rotate-matrix rotate-main.c rotate.c -I
 
-rotate-matrix: read-matrix.o 
-	$(CC) -o rotate-matrix read-matrix.o $(CFLAGS) 
-
-read-matrix.o: rotate.c 
-	$(CC) -o read-matrix.o -c rotate.c $(CFLAGS)  
-
+#hellomake: hellomake.c hellofunc.c
+#     gcc -o hellomake hellomake.c hellofunc.c -I.
