@@ -26,7 +26,9 @@ int main() {
   run_check(5,3,124);
   run_check(-5,3,125);
   run_check(5,-3,125);
-  run_check(5,3,-125);
+  run_check(5,0,-125);
+  run_check(0,3,125);
+  run_check(0,0,125);
   
 }
 
