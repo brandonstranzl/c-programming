@@ -6,29 +6,29 @@ unsigned power(unsigned x, unsigned y);
 
 void run_check(unsigned x, unsigned y, unsigned expected_ans) {
   if (power(x,y) != expected_ans) {
-    printf("FAILED AT %d, %d, %d\n", x,y,expected_ans);
+    //printf("FAILED AT %d, %d, %d\n", x,y,expected_ans);
     exit(EXIT_FAILURE);
   }
-/*  else {
-    printf("Worked for %d, %d, %d\n", x,y,expected_ans);
-    //exit(EXIT_SUCCESS);
-  }
-*/
 }
 
 int main() {
-  //int x = 5;
-  //int y = 3;
-  //int result = power(x,y);
-  //printf("%d\n", result);
 
-  run_check(5,3,125);
-  run_check(5,3,124);
-  run_check(-5,3,125);
-  run_check(5,-3,125);
-  run_check(5,0,-125);
-  run_check(0,3,125);
-  run_check(0,0,125);
+  run_check(0,0,1);
+  run_check(0,1,0);
+  run_check(0,31,0);
+  run_check(1,0,1);
+  run_check(31,0,1);
+  run_check(1,31,1);
+  run_check(2,3,8);
+  run_check(5,4,625);
+  run_check(77,1,77);
+  run_check(4,4,256);
+  run_check(1,1,1);
+  run_check(-1,0,1);
+  run_check(0,-1,0);
+  run_check(2,31,2147483648);
+  return EXIT_SUCCESS;
+
   
 }
 
