@@ -56,11 +56,6 @@ suit_t flush_suit(deck_t * hand) {
   return NUM_SUITS;
 }
 
-// struct deck_tag {
-//   card_t ** cards;
-//   size_t n_cards;
-// };
-// typedef struct deck_tag deck_t;
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
   int largest = 0;
@@ -212,8 +207,8 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 }
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
-  qsort(hand1->cards, hand1->n_cards, sizeof(card_t *), card_ptr_comp);
-  qsort(hand2->cards, hand2->n_cards, sizeof(card_t *), card_ptr_comp);
+  qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
+  qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
 
   hand_eval_t hand_1 = evaluate_hand(hand1);
   hand_eval_t hand_2 = evaluate_hand(hand2);
