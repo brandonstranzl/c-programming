@@ -4,6 +4,7 @@
 #define VALUE_KING 13
 #define VALUE_QUEEN 12
 #define VALUE_JACK 11
+
 typedef enum {
   SPADES,
   HEARTS,

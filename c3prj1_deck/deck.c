@@ -33,7 +33,7 @@ void shuffle(deck_t * d){
     **(cards + i) = **(cards + r);
     **(cards + r) = temp;
     // **((d->cards)+r) = **((d->cards)+i);
-    // **((d->cards)+i) = **temp;
+    // **((d->cards)+i) = **temp; 
   }
   //printf("\n");
 }
@@ -51,13 +51,23 @@ void assert_full_deck(deck_t * d) {
     //printf(" YIKES %u%c\n", card1.value, suit_letter(card1));
     for(size_t j=0; j<d->n_cards; j++){
       card_t card2 = **(d->cards+j);
+<<<<<<< HEAD
+      //print_card(card2);  
+      if(card2.value==card1.value && card2.suit == card1.suit) { 
+         count = 1;
+=======
       //print_card(card2);
       if(card2.value==card1.value && card2.suit == card1.suit) {
 	count = 1;
+>>>>>>> d1a54ff2802cc51480bec626799ccecead781b8d
       }
       //printf(" ");
     }
     //printf("\ncount = %d\n", count);
   }
   assert(count == 1);
+<<<<<<< HEAD
+} 
+=======
 }
+>>>>>>> d1a54ff2802cc51480bec626799ccecead781b8d
