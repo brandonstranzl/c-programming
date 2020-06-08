@@ -39,35 +39,32 @@ void shuffle(deck_t * d){
 }
 
 void assert_full_deck(deck_t * d) {
-  // printf("here is the assert deck:\n");
-  // print_hand(d);
-  // printf("\n");
-  // printf("size of d = %zu\n", d->n_cards);
+  printf("here is the assert deck:\n");
+  print_hand(d);
+  printf("\n\n");
+  printf("size of assert deck d = %zu\n", d->n_cards);
+  printf("\n\n");
   int count = 0;
+  int loop = 0;
   for(size_t i=0; i<d->n_cards; i++){
+    count =0;
     card_t card1 = **(d->cards+i);
-    //print_card(card1);
-    //printf("\n");
-    //printf(" YIKES %u%c\n", card1.value, suit_letter(card1));
+    // printf("here is the card1 in outer loop: \n");
+    // print_card(card1);
+    // printf("\n");
+    // printf("here is the inner loop to see if card1 is contained:\n");
+    // printf(" YIKES %u%c\n", card1.value, suit_letter(card1));
     for(size_t j=0; j<d->n_cards; j++){
       card_t card2 = **(d->cards+j);
-<<<<<<< HEAD
-      //print_card(card2);  
-      if(card2.value==card1.value && card2.suit == card1.suit) { 
-         count = 1;
-=======
-      //print_card(card2);
+      // print_card(card2);
       if(card2.value==card1.value && card2.suit == card1.suit) {
-	count = 1;
->>>>>>> d1a54ff2802cc51480bec626799ccecead781b8d
+	count +=1;
       }
-      //printf(" ");
+      // printf(" ");
     }
-    //printf("\ncount = %d\n", count);
+    loop += 1;
+    // printf("\nhere is the loop number: %d \n", loop);
+    // printf("here is the count for assert function = %d\n\n", count);
   }
   assert(count == 1);
-<<<<<<< HEAD
 } 
-=======
-}
->>>>>>> d1a54ff2802cc51480bec626799ccecead781b8d
