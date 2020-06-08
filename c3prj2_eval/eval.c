@@ -56,6 +56,12 @@ suit_t flush_suit(deck_t * hand) {
     return NUM_SUITS;
   }
 
+// struct deck_tag {
+//   card_t ** cards;
+//   size_t n_cards;
+// };
+// typedef struct deck_tag deck_t;
+
 unsigned get_largest_element(unsigned * arr, size_t n) {
   int largest = 0;
   for (size_t i = 0; i < n; i++) {
