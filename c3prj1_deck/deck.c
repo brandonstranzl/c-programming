@@ -45,7 +45,7 @@ void assert_full_deck(deck_t * d) {
   printf("size of assert deck d = %zu\n", d->n_cards);
   printf("\n\n");
   int count = 0;
-  int loop = 0;
+  //int loop = 0;
   for(size_t i=0; i<d->n_cards; i++){
     count =0;
     card_t card1 = **(d->cards+i);
@@ -56,13 +56,13 @@ void assert_full_deck(deck_t * d) {
     // printf(" YIKES %u%c\n", card1.value, suit_letter(card1));
     for(size_t j=0; j<d->n_cards; j++){
       card_t card2 = **(d->cards+j);
-      // print_card(card2);
-      if(card2.value==card1.value && card2.suit == card1.suit) {
-	count +=1;
+      //print_card(card2);  
+      if(card2.value==card1.value && card2.suit == card1.suit) { 
+         count += 1;
       }
       // printf(" ");
     }
-    loop += 1;
+    //loop += 1;
     // printf("\nhere is the loop number: %d \n", loop);
     // printf("here is the count for assert function = %d\n\n", count);
   }
