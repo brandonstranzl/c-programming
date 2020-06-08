@@ -115,29 +115,29 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   // printf("value at index subtract 1 = %u\n", (hand->cards[i]->value - 1) );
   // printf("value at index+1 = %u\n", hand->cards[i+1]->value);   
     if ( ( hand->cards[i]->value - 1 ) == hand->cards[i+1]->value ) {
-    printf("true\n");
+      //    printf("true\n");
      if ( ( fs == NUM_SUITS ) || ( hand->cards[i+1]->suit == fs ) )
      count++;
-     if ( hand->cards[i+1]->suit == fs ) { printf("if c>5 this is a straight flush\n"); }
+     //if ( hand->cards[i+1]->suit == fs ) { printf("if c>5 this is a straight flush\n"); }
     // index = i;
      } else {
        break;
      }
   } 
-  printf("count of cards in a row = %d\n", count);
+  //printf("count of cards in a row = %d\n", count);
   if (count >= n) {
   return 1;
   } else {
-  printf("there is no straight at index position %zu\n", index);
+  //printf("there is no straight at index position %zu\n", index);
   return 0;
   }
 }
 
 int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if(hand->cards[index]->value != VALUE_ACE) {
-    printf("there is no ace low straight at index %zu\n", index);
+    //   printf("there is no ace low straight at index %zu\n", index);
     return 0;
-    printf("i a here now !!! ");
+    //printf("i a here now !!! ");
   }
   int index_of_Five = -1;
   for (int i = 0; i < hand->n_cards; i ++) {
@@ -182,17 +182,17 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     if (hand->cards[i]->value != n_of_a_kind_value) {
     // printf("%d %d\n", hand->cards[i]->value, n_of_a_kind_value);
     ans.cards[index + n] = hand->cards[i];
-    print_card(*ans.cards[index + n]);
-    printf(" ");
+    //print_card(*ans.cards[index + n]);
+    //printf(" ");
     index ++;
-    printf("index = %d\n", index); //index = 2
+    //printf("index = %d\n", index); //index = 2
     }
-    printf("index + n = %d\n", index + n);
+    //printf("index + n = %d\n", index + n);
     if ((index + n) == 5) {
       break;
     }  
   }
-  printf("\n");
+  //printf("\n");
   return ans;
 }
 
