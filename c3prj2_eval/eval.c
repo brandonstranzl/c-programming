@@ -69,19 +69,13 @@ unsigned get_largest_element(unsigned * arr, size_t n) {
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind) {
-  size_t index = -1;
- // printf("loop stopped @ lowest index for search value of %u\n", n_of_akind);
   for (int i = 0; i < n; i++) {
-   // printf("at i = %d, value = %d. does this = search value of %u?\n", i, match_counts[i], n_of_akind);
     if ( match_counts[i] == n_of_akind) {
-      index = i;
-      return index;
-      //break;
+      return i;
     }
   }
- // printf("index = %zu\n", index);
-  assert(index != -1);
-  return 0;
+  printf("n_of_akind not found in match_counts");
+  abort();
 }
 
 ssize_t find_secondary_pair(deck_t * hand,
@@ -101,22 +95,15 @@ ssize_t find_secondary_pair(deck_t * hand,
 //two helper functions:
 int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   int count = 1;
-  //int index = 0;
-  //print_hand(hand);
-  //printf("\n");
-  
-  for (size_t i = index; i < (i + n - 1) && i < (hand->n_cards - 1); i++) {
-  //  printf("is there a flush? 4 = no. fs = %d\n", fs);
-  //  printf("is the card in loop in the flush? suit: %d\n", hand->cards[i]->suit);
+  //int index = 0;  
+  for (int i=index; i<(i + n - 1) && i<(hand->n_cards-1); i++) {
     if ( (fs != NUM_SUITS) && (hand->cards[i]->suit != fs) ) {
-      //  printf("there is a flush in this hand but card at this index not in the flush\n");
     break;
     }
-  // printf("value at index subtract 1 = %u\n", (hand->cards[i]->value - 1) );
-  // printf("value at index+1 = %u\n", hand->cards[i+1]->value);   
-    if ( ( hand->cards[i]->value - 1 ) == hand->cards[i+1]->value ) {
+   
+    if ( ( hand->cards[i+1]->value ) == hand->cards[i]->value - 1 ) {
       //    printf("true\n");
-     if ( ( fs == NUM_SUITS ) || ( hand->cards[i+1]->suit == fs ) )
+     if ( ( fs == NUM_SUITS ) || ( hand->cards[i]->suit == fs ) )
      count++;
      //if ( hand->cards[i+1]->suit == fs ) { printf("if c>5 this is a straight flush\n"); }
     // index = i;
