@@ -109,7 +109,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   //  printf("is there a flush? 4 = no. fs = %d\n", fs);
   //  printf("is the card in loop in the flush? suit: %d\n", hand->cards[i]->suit);
     if ( (fs != NUM_SUITS) && (hand->cards[i]->suit != fs) ) {
-    printf("there is a flush in this hand but card at this index not in the flush\n");
+      //  printf("there is a flush in this hand but card at this index not in the flush\n");
     break;
     }
   // printf("value at index subtract 1 = %u\n", (hand->cards[i]->value - 1) );
@@ -179,22 +179,51 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 
   int index = 0; 
   for(int i=0;i<(hand->n_cards);i++){
-    if (hand->cards[i]->value != n_of_a_kind_value) {
-    // printf("%d %d\n", hand->cards[i]->value, n_of_a_kind_value);
-    ans.cards[index + n] = hand->cards[i];
-    //print_card(*ans.cards[index + n]);
-    //printf(" ");
-    index ++;
-    //printf("index = %d\n", index); //index = 2
+     if (n > 0) {
+       if (hand->cards[i]->value != n_of_a_kind_value) {
+       ans.cards[index + n] = hand->cards[i];
+       index ++;
+       } 
     }
-    //printf("index + n = %d\n", index + n);
-    if ((index + n) == 5) {
+    else {
+      ans.cards[index + n] = hand->cards[i]; 
+      index++;
+    }    
+     if ((index + n) == 5) {
       break;
     }  
-  }
-  //printf("\n");
+   }
+  
   return ans;
 }
+
+
+/*hand_eval_t build_hand_from_match(deck_t * hand,
+				  unsigned n,
+				  hand_ranking_t what,
+				  size_t idx) {
+
+  hand_eval_t ans;
+  ans.ranking = what;
+  int index = 0;
+  int more_cards = 5 - n;
+  int n_of_a_kind = hand->cards[idx]->value;
+
+  for (int i = idx; i < idx + n; i++, index++)
+    ans.cards[index] = hand->cards[i];
+
+  for (int i = 0; i < hand->n_cards; i++) {
+    if (hand->cards[i]->value != n_of_a_kind) {
+      ans.cards[index] = hand->cards[i];
+      more_cards--;
+      index++;
+    }
+    if (more_cards == 0)
+      break;
+  }
+  return ans;
+}
+*/
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
@@ -357,3 +386,4 @@ hand_eval_t evaluate_hand(deck_t * hand) {
   }
   return build_hand_from_match(hand, 0, NOTHING, 0);
 }
+
