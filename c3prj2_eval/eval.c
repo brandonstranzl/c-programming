@@ -4,28 +4,162 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  return 0;
+  const card_t * const * cp1 = vp1;
+  const card_t * const * cp2 = vp2;
+  if ((*cp2)->value < (*cp1)->value ) {
+    return -1;
+  }
+  if ((*cp2)->value > (*cp1)->value ) {
+    return 1;
+  }
+  // if ((*cp2)->value == (*cp1)->value ) {
+  else if ((*cp2)->suit < (*cp1)->suit) {
+      return -1;
+    }
+  else if ((*cp2)->suit > (*cp1)->suit) {
+      return 1;
+    }
+  //  else if ((*cp2)->suit == (*cp1)->suit) {
+  else {
+    return 0;
+    }
 }
 
 suit_t flush_suit(deck_t * hand) {
-  return NUM_SUITS;
-}
+  card_t ** cards = hand->cards;
+  size_t n = hand->n_cards;
+  int s,h,d,c;
+  s=0;
+  h=0;
+  d=0;
+  c=0;
+  card_t card;
+    //printf("testing the loop to check for flush\n");
+    for (int i=0; i<n; i++) {
+      card.value = cards[i]->value;
+      card.suit = cards[i]->suit;
+      //print_card(card);
+      //printf(" ");
+      switch (card.suit) {
+      case 0: {s++; break;}
+      case 1: {h++; break;}
+      case 2: {d++; break;}
+      case 3: {c++; break;}
+      case 4: break;
+      }
+    }
+    //printf("\n");
+    if(s>=5) return SPADES;
+    if(h>=5) return HEARTS;
+    if(d>=5) return DIAMONDS;
+    if(c>=5) return CLUBS;
+    return NUM_SUITS;
+  }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
+  int largest = 0;
+  for (size_t i = 0; i < n; i++) {
+    if (*(arr + i) > largest) {
+      largest = arr[i];
+    }
+  }
+  //printf("here is largest %d \n", largest);
+  return largest;
+}
+
+size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind) {
+  size_t index = -1;
+ // printf("loop stopped @ lowest index for search value of %u\n", n_of_akind);
+  for (int i = 0; i < n; i++) {
+   // printf("at i = %d, value = %d. does this = search value of %u?\n", i, match_counts[i], n_of_akind);
+    if ( match_counts[i] == n_of_akind) {
+      index = i;
+      return index;
+      //break;
+    }
+  }
+ // printf("index = %zu\n", index);
+  assert(index != -1);
   return 0;
 }
 
-size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
-  return 0;
-}
-ssize_t  find_secondary_pair(deck_t * hand,
+ssize_t find_secondary_pair(deck_t * hand,
 			     unsigned * match_counts,
 			     size_t match_idx) {
+  ssize_t index = -1;
+  for(index=0;index<hand->n_cards;index++){
+    if(match_counts[index] > 1 && hand->cards[index]->value != hand->cards[match_idx]->value){
+      return index;
+      //break;
+    }
+  }
+  //printf("no second pair\n");
   return -1;
 }
 
+//two helper functions:
+int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+  int count = 1;
+  //int index = 0;
+  //print_hand(hand);
+  //printf("\n");
+  
+  for (size_t i = index; i < (i + n - 1) && i < (hand->n_cards - 1); i++) {
+  //  printf("is there a flush? 4 = no. fs = %d\n", fs);
+  //  printf("is the card in loop in the flush? suit: %d\n", hand->cards[i]->suit);
+    if ( (fs != NUM_SUITS) && (hand->cards[i]->suit != fs) ) {
+    printf("there is a flush in this hand but card at this index not in the flush\n");
+    break;
+    }
+  // printf("value at index subtract 1 = %u\n", (hand->cards[i]->value - 1) );
+  // printf("value at index+1 = %u\n", hand->cards[i+1]->value);   
+    if ( ( hand->cards[i]->value - 1 ) == hand->cards[i+1]->value ) {
+    printf("true\n");
+     if ( ( fs == NUM_SUITS ) || ( hand->cards[i+1]->suit == fs ) )
+     count++;
+     if ( hand->cards[i+1]->suit == fs ) { printf("if c>5 this is a straight flush\n"); }
+    // index = i;
+     } else {
+       break;
+     }
+  } 
+  printf("count of cards in a row = %d\n", count);
+  if (count >= n) {
+  return 1;
+  } else {
+  printf("there is no straight at index position %zu\n", index);
+  return 0;
+  }
+}
+
+int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  if(hand->cards[index]->value != VALUE_ACE) {
+    printf("there is no ace low straight at index %zu\n", index);
+    return 0;
+    printf("i a here now !!! ");
+  }
+  int index_of_Five = -1;
+  for (int i = 0; i < hand->n_cards; i ++) {
+    if(hand->cards[i]->value == 5) {
+    index_of_Five = i;
+    }
+  }
+  if (index_of_Five == -1) {
+  //  printf("no 5 in this hand\n");
+    return 0;
+  } else {
+    // return the 5, 4, 3, 2 combo we will need to complete the straight
+    return is_n_length_straight_at(hand, index_of_Five, fs, 4);
+  }
+}
+
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  if(is_ace_low_straight_at(hand, index, fs) == 1) {
+    return -1;
+  }
+  if(is_n_length_straight_at(hand, index, fs, 5) == 1) {
+    return 1;
+  }
   return 0;
 }
 
@@ -35,16 +169,52 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
+  ans.ranking = what;
+  int n_of_a_kind_value = hand->cards[idx]->value;
+
+  for(int i=0;i<n;i++){
+    ans.cards[i] = (hand->cards[idx+i]);
+  }
+
+  int index = 0; 
+  for(int i=0;i<(hand->n_cards);i++){
+    if (hand->cards[i]->value != n_of_a_kind_value) {
+    // printf("%d %d\n", hand->cards[i]->value, n_of_a_kind_value);
+    ans.cards[index + n] = hand->cards[i];
+    print_card(*ans.cards[index + n]);
+    printf(" ");
+    index ++;
+    printf("index = %d\n", index); //index = 2
+    }
+    printf("index + n = %d\n", index + n);
+    if ((index + n) == 5) {
+      break;
+    }  
+  }
+  printf("\n");
   return ans;
 }
 
-
 int compare_hands(deck_t * hand1, deck_t * hand2) {
+  qsort(hand1->cards, hand1->n_cards, sizeof(hand1->cards[0]), card_ptr_comp);
+  qsort(hand2->cards, hand2->n_cards, sizeof(hand2->cards[0]), card_ptr_comp);
 
+  hand_eval_t hand_1 = evaluate_hand(hand1);
+  hand_eval_t hand_2 = evaluate_hand(hand2);
+
+  if (hand_1.ranking < hand_2.ranking)
+    return 1;
+  else if (hand_2.ranking < hand_1.ranking)
+    return -1;
+
+  for (int i = 0; i < 5; i++) {
+    if (hand_1.cards[i]->value > hand_2.cards[i]->value)
+      return 1;
+    else if (hand_1.cards[i]->value < hand_2.cards[i]->value)
+      return -1;
+  }
   return 0;
 }
-
-
 
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
