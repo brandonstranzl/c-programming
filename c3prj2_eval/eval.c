@@ -95,6 +95,35 @@ ssize_t find_secondary_pair(deck_t * hand,
 //two helper functions:
 int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   int count = 1;
+  card_t ** cardsInHand = hand->cards;
+  if (fs == NUM_SUITS) {
+    for (size_t i = index; i < hand->n_cards-1; i++) {
+      if (cardsInHand[i]->value == cardsInHand[i+1]->value) continue;
+      if (cardsInHand[i]->value-1 == cardsInHand[i+1]->value) {
+	count++;
+	if (count == n) return 1;
+      } else return 0;
+    }
+  } else {
+    if (cardsInHand[index]->suit != fs) return 0;
+    else {
+      card_t * tmpCard = cardsInHand[index];
+      for (size_t i = index+1; i < hand->n_cards; i++) {
+	if (cardsInHand[i]->suit != fs) continue;
+	if (tmpCard->value-1 == cardsInHand[i]->value) {
+	  count++;
+	  if (count == n) return 1;
+	  tmpCard = cardsInHand[i];
+	} else return 0;
+      }
+    }
+  }
+  return 0;
+}
+
+
+/*int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
+  int count = 1;
   //int index = 0;  
   for (int i=index; i<(i + n - 1) && i<(hand->n_cards-1); i++) {
     if ( (fs != NUM_SUITS) && (hand->cards[i]->suit != fs) ) {
@@ -119,8 +148,23 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n) {
   return 0;
   }
 }
+*/
 
 int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  if ((hand->cards[index])->value == VALUE_ACE) {
+    card_t ** cardsInHands = hand->cards;
+    for (size_t i = index+1; i < hand->n_cards-3; i++) {
+      if (cardsInHands[i]->value == 5 && is_n_length_straight_at(hand, i, fs, 4) == 1) {
+	if (fs == NUM_SUITS) return 1;
+	else if (cardsInHands[index]->suit == fs) return 1;
+	else return 0;
+      }
+    }
+  }
+  return 0;
+}
+
+/*int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if(hand->cards[index]->value != VALUE_ACE) {
     //   printf("there is no ace low straight at index %zu\n", index);
     return 0;
@@ -140,6 +184,7 @@ int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs) {
     return is_n_length_straight_at(hand, index_of_Five, fs, 4);
   }
 }
+*/
 
 int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
   if(is_ace_low_straight_at(hand, index, fs) == 1) {
