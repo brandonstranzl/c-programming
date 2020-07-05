@@ -1,9 +1,5 @@
-Grading at Sun Jul  5 22:47:00 UTC 2020
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_13_did_not_match
-Your file did not match the expected ouput
-Your output did not match what we expected.
+Grading at Sun Jul  5 22:50:15 UTC 2020
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: F
+Overall Grade: A
