@@ -3,10 +3,17 @@
 #include <assert.h>
 #include "deck.h"
 
+/*void print_hand(deck_t * hand){
+  for(int i = 0; i < hand->n_cards; i++){
+    card_t card (*hand->cards[i]);
+    print_card(*hand->cards[i]);
+    printf(" ");
+    }
+    }*/
+
 void print_hand(deck_t * hand){
-  for(size_t i=0; i<hand->n_cards; i++){
-    card_t card = *(hand->cards[i]);
-    print_card(card);
+  for(int i=0;i<hand->n_cards;i++){
+    print_card(*hand->cards[i]);
     printf(" ");
   }
 }
