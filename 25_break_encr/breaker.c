@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+
+//c = (p + k)%26
+int getMaxIndex(FILE * f, int * array) {
+  int c;
+  int max = 0;
+  int index;
+  while ((c = fgetc(f)) != EOF) {
+    if (isalpha(c)) {
+      c = tolower(c);
+      c -= 'a';
+      array[c]++;
+    }
+  }
+  for (int i = 0; i < 26; i++) {
+    if (array[i] > max) {
+      max = array[i];
+      index = i;
+    }
+  }
+  //  printf("here is the index: %d\n", index);
+  return index;
+}
+
+int getKey(int index) {
+  //  printf("here is the index: %d\n", index);
+  int key = (index - 4 + 26)%26;
+  return key;
+}
+
+void decrypt(FILE * f) {
+  int array[26] = {0};
+  int index = getMaxIndex(f, array);
+  printf("%d\n", getKey(index));
+}
+
+int main(int argc, char ** argv) {
+
+  if (argc != 2) {
+    fprintf(stderr,"Usage: decrypt inputFileName\n");
+    return EXIT_FAILURE;
+  }
+
+  FILE * f = fopen(argv[1], "r");
+  if (f == NULL) {
+    perror("Could not open file");
+    return EXIT_FAILURE;
+  }
+
+  decrypt(f);
+
+  if (fclose(f) != 0) {
+    perror("Failed to close the input file!");
+    return EXIT_FAILURE;
+  }
+
+  return EXIT_SUCCESS;
+
+}
