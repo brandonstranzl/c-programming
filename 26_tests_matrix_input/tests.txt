@@ -1,1 +1,12 @@
-12345
+
+tests0-zerotestfile.txt
+tests1-morethan10.txt
+tests2-blankrow.txt
+tests3-tooManyRows.txt
+tests4-newLineTooSoon.txt
+tests6- too many inputs for argv 
+tests7-blankfile.txt
+no-newline.txt
+escape-255.txt
+non-unicode.txt
+
