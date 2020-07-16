@@ -29,6 +29,12 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
 
+  int c = fgetc(f);
+  if(c == EOF) {
+    fprintf(stderr,"Usage: Empty File\n");
+    return EXIT_FAILURE;
+  }
+
   char matrix[10][10];
 
   for (int i = 0; i < 10; i++) {
