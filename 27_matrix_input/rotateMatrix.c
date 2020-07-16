@@ -32,10 +32,10 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
 
-  if (*f == NULL) {
+  /*  if (*f == NULL) {
     fprintf(stderr,"Invalid input file '%s' - input file == NULL\n",argv[1]);
     exit(EXIT_FAILURE);
-  }
+    }*/
 
   /* int c = fgetc(f);
   if(c == EOF) {
