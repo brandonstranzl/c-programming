@@ -1,0 +1,11 @@
+
+blank_input.txt
+too many inputs for argv 
+tests1-morethan10.txt
+tests2-blankrow.txt
+tests3-tooManyRows.txt
+tests4-newLineTooSoon.txt
+tests5-255_test_for_char.txt
+null_terminator.txt
+hex.txt
+
