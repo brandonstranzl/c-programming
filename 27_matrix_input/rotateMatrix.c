@@ -19,15 +19,20 @@ void rotate(char matrix[10][10]) {
 }
 
 int main(int argc, char ** argv) {
-
-  FILE * f = fopen(argv[1], "r");
-
+ 
   if (argc != 2) {
     fprintf(stderr,"Invalid number of params in argv!\n");
     exit(EXIT_FAILURE);
   }
 
+  FILE * f = fopen(argv[1], "r");
+
   if (f == NULL) {
+    fprintf(stderr,"Invalid input file '%s' - input file == NULL\n",argv[1]);
+    exit(EXIT_FAILURE);
+  }
+
+  if (*f == NULL) {
     fprintf(stderr,"Invalid input file '%s' - input file == NULL\n",argv[1]);
     exit(EXIT_FAILURE);
   }
@@ -74,6 +79,11 @@ int main(int argc, char ** argv) {
       printf("%c", matrix[i][j]);
     };
     printf("\n");
+  }
+
+  if(fclose(f)!=0){
+    fprintf(stderr,"Unable to close file '%s'\n",argv[1]);
+    return EXIT_FAILURE;
   }
 
   return 0;
