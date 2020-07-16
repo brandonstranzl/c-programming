@@ -48,7 +48,7 @@ int main(int argc, char ** argv) {
       }
     }
     else {
-      fprintf(stderr,"Invalid input\n",argv[1]);
+      fprintf(stderr,"Invalid input in %s\n",argv[1]);
       exit(EXIT_FAILURE);
     }
   }
