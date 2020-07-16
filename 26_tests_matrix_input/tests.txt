@@ -1,12 +1,13 @@
+blank_input.txt
 
-tests0-zerotestfile.txt
+tests0.txt too many inputs for argv 
 tests1-morethan10.txt
 tests2-blankrow.txt
 tests3-tooManyRows.txt
 tests4-newLineTooSoon.txt
-tests6- too many inputs for argv 
-tests7-blankfile.txt
-no-newline.txt
-escape-255.txt
-non-unicode.txt
-
+tests5-255_test_for_char.txt
+null_terminator.txt
+hex.txt
+too_few_lines.txt
+this_file_does_not_exist.txt
+10by10.txt
