@@ -1,0 +1,10 @@
+Grading at Thu Jul 16 01:40:54 UTC 2020
+Attempting to compile rotateMatrix.c
+rotateMatrix.c: In function ‘main’:
+rotateMatrix.c:51:22: error: too many arguments for format [-Werror=format-extra-args]
+       fprintf(stderr,"Invalid input\n",argv[1]);
+                      ^
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
