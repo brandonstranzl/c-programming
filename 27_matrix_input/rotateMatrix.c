@@ -58,8 +58,8 @@ int main(int argc, char ** argv) {
       exit(EXIT_FAILURE);
     }
   }
-  int c=fgetc(f);
-  if(c != EOF){
+  int c2=fgetc(f);
+  if(c2 != EOF){
     fprintf(stderr,"Input file '%s' is too long\n",argv[1]);
     exit(EXIT_FAILURE);
   }
