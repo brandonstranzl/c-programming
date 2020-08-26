@@ -32,22 +32,18 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
 
-  /*  if (*f == NULL) {
+
+  if (feof(f)) {
     fprintf(stderr,"Invalid input file '%s' - input file == NULL\n",argv[1]);
     exit(EXIT_FAILURE);
-    }*/
-
-  /* int c = fgetc(f);
-  if(c == EOF) {
-    fprintf(stderr,"Usage: Empty File\n");
-    return EXIT_FAILURE;
-    }*/
-
+    }
+  
   char matrix[10][10];
 
+  int lines = 0;
   for (int i = 0; i < 10; i++) {
-    char temp[12];
-    if ( fgets(temp, 12, f) == NULL ) {
+    char temp[11];
+    if ( fgets(temp, 11, f) == NULL ) {
       exit(EXIT_FAILURE);
     }
     if (temp[10] == '\n') {
@@ -65,7 +61,13 @@ int main(int argc, char ** argv) {
       fprintf(stderr,"Invalid input in %s\n",argv[1]);
       exit(EXIT_FAILURE);
     }
+    lines = i;
   }
+  if (lines < 9) {
+    fprintf(stderr,"Input file '%s' is too short\n",argv[1]);
+    exit(EXIT_FAILURE);
+  }
+    
   int c2=fgetc(f);
   if (c2 != EOF) {
     fprintf(stderr,"Input file '%s' is too long\n",argv[1]);
