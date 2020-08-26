@@ -32,7 +32,7 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
   
-  char matrix[10][10];
+  char matrix[10][10] = {0};
 
   int lines = 0;
   for (int i = 0; i < 10; i++) {
