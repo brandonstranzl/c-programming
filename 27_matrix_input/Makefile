@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -std=gnu99 -pedantic -Wall -c -I
+CFLAGS= -std=gnu99 -pedantic -Wall -c -I -ggdb
 
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)
