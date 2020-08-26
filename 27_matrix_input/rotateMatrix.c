@@ -61,7 +61,7 @@ void readMatrix(FILE * f, char matrix[10][10]) {
 
 
 int main(int argc, char ** argv) {
- 
+
   if (argc != 2) {
     fprintf(stderr,"Invalid number of params in argv!\n");
     return EXIT_FAILURE;
