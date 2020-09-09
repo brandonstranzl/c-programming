@@ -53,6 +53,7 @@ int main(int argc, char ** argv) {
     array = read_lines(stdin, array, &lines_read);
     sortData(array, lines_read);
     print_and_free(array, lines_read);
+    array = NULL;
   }
 
   else {
@@ -68,6 +69,7 @@ int main(int argc, char ** argv) {
 	print_and_free(array, lines_read);
       }
       fclose(f);
+      array = NULL;
     }
   }
 
