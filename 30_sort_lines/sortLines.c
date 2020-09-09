@@ -21,7 +21,7 @@ char ** read_lines(FILE * input, char ** array, int * lines_read) {
   char * buffer = NULL;
   size_t n = 0;
   ssize_t len = 0;
-  while ( (len = getline(&buffer,&n,input)) > 1 ) {
+  while ( (len = getline(&buffer,&n,input)) >=0 ) {
     (*lines_read)++;
     array = realloc ( array, (*lines_read + 1)*(sizeof(*array)) );
     array[*lines_read-1] = malloc( (strlen(buffer)+1) * sizeof(array[*lines_read-1]));
