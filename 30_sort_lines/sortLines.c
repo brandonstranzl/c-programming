@@ -65,6 +65,7 @@ int main(int argc, char ** argv) {
 	sortData(array, lines_read);
 	print_and_free(array, lines_read);
       }
+      fclose(f); 
     }
   }
 
