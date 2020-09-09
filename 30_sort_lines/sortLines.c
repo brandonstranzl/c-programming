@@ -64,6 +64,7 @@ int main(int argc, char ** argv) {
 	return EXIT_FAILURE;
       }
       else {
+	lines_read = 0;
 	array = read_lines(f, array, &lines_read);
 	sortData(array, lines_read);
 	print_and_free(array, lines_read);
