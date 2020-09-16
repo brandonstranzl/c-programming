@@ -40,10 +40,32 @@ void addRandomMine(board_t * b) {
   b->board[y][x] = HAS_MINE;
 }
 
-board_t * makeBoard(int w, int h, int numMines) {
-  //WRITE ME!
-  return NULL;
+board_t * makeBoard(int w, int h, int numMines ) {
+
+
+  board_t *b = malloc (sizeof(*b));
+  b->width = w;
+  b->height = h;
+  b->totalMines = numMines;
+
+  b->board = malloc(h * sizeof( *(b->board) ) );
+  //b->board = malloc(sizeof(int[h][w]));
+
+  for(int i = 0; i < h; i++) {
+    b->board[i] = malloc(w * sizeof( *(b->board) ) );
+    for(int j = 0; j< w; j++) {
+      b->board[i][j]=UNKNOWN;
+    }
+  }
+
+  for (int i = 0; i < numMines; i++) {
+    addRandomMine(b);
+  }
+
+  return b;
+
 }
+
 void printBoard(board_t * b) {    
   int found = 0;
   printf("    ");
@@ -94,10 +116,33 @@ void printBoard(board_t * b) {
   }
   printf("\nFound %d of %d mines\n", found, b->totalMines);
 }
+
 int countMines(board_t * b, int x, int y) {
   //WRITE ME!
-  return 0;
+  int r = b->height;
+  int c = b->width;
+  int count = 0;
+
+  for (int i = -1; i < 2; i++) {
+    int ny = y + i;
+    if (ny >= 0 && ny < r) {
+      for (int j = -1; j < 2; j++) {
+	int nx = x + j;
+	if (nx >= 0 && nx < c) {
+	  if ( IS_MINE(b->board[ny][nx]) ) {
+	    count++;
+	  }
+	}
+      }
+    }
+  }
+  if ( count > 0 && IS_MINE(b->board[y][x]) ) {
+    count--;
+  }
+  return count;
 }
+
+
 int click (board_t * b, int x, int y) {
   if (x < 0 || x >= b->width ||
       y < 0 || y >= b->height) {
@@ -119,12 +164,36 @@ int click (board_t * b, int x, int y) {
 
 int checkWin(board_t * b) {
   //WRITE ME!
-  return 0;
+  int r = b->height;
+  int c = b->width;
+  int count = 0;
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < c; j++) {
+      if (b->board[i][j] == UNKNOWN) {
+	count++;
+      }
+    }
+  }
+  if (count == 0) {
+    return 1;
+  }
+  else {
+    return 0;
+  }
 }
 
 void freeBoard(board_t * b) {
   //WRITE ME!
+  int h = b->height;
+  //int w = b->width;
+
+  for(int i = 0; i < h; i++) {
+    free(b->board[i]);
+  }
+  free(b->board);
+  free(b);
 }
+
 
 int readInt(char ** linep, size_t * lineszp) {
   if (getline (linep, lineszp, stdin) == -1) {
