@@ -15,7 +15,6 @@ void encrypt(FILE * f, int key, FILE * outfile){
 	c -= 'a';
 	c += key;
 	c %= 26;
-	c += 'a';
       }
       *ptr = c;
       ptr++;
@@ -40,7 +39,7 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  //outfileNAme is argv[2] + ".txt", so add 4 to its length.
+  //outfileNAme is argv[2] + ".txt", so add 5 to its length - include \0
   char * outFileName = malloc((strlen(argv[2]) + 5) * sizeof(*outFileName));
   strcpy(outFileName, argv[2]);
   strcat(outFileName, ".enc");
