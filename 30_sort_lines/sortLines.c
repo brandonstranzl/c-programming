@@ -60,14 +60,14 @@ int main(int argc, char ** argv) {
     for (int i = 1; i < argc; i++) {
       FILE * f = fopen(argv[i], "r");
       if (f == NULL) {
-	perror("Could not open file");
-	return EXIT_FAILURE;
+	      perror("Could not open file");
+	      return EXIT_FAILURE;
       }
       else {
-	lines_read = 0;
-	array = read_lines(f, array, &lines_read);
-	sortData(array, lines_read);
-	print_and_free(array, lines_read);
+	      lines_read = 0;
+	      array = read_lines(f, array, &lines_read);
+	      sortData(array, lines_read);
+	      print_and_free(array, lines_read);
       }
       fclose(f);
       array = NULL;
