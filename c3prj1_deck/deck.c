@@ -54,7 +54,7 @@ void assert_full_deck(deck_t * d) {
   int count = 0;
   //int loop = 0;
   for(size_t i=0; i<d->n_cards; i++){
-    count =0;
+    count = 0;
     card_t card1 = **(d->cards+i);
     // printf("here is the card1 in outer loop: \n");
     // print_card(card1);
