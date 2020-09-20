@@ -17,7 +17,7 @@ kvpair_t * splitPair(char * line){
   token = strtok(line, "=");
   answer->key = token;
   //while (token != NULL) {
-  token = strtok(NULL,"=");
+  token = strtok(NULL,"\0");
   answer->value = token;
   //}
   return answer;
