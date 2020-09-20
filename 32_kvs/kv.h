@@ -1,8 +1,7 @@
 #ifndef __KV_H__
 #define __KV_H__
 
-
-struct _kvpair_t { 
+struct _kvpair_t {
   //DEFINE ME!
   char * key; //name of fruit
   char * value; // color of fruit
@@ -10,13 +9,12 @@ struct _kvpair_t {
 };
 typedef struct _kvpair_t kvpair_t;
 
-struct _kvarray_t { 
+struct _kvarray_t {
   //DEFINE ME!
   kvpair_t ** kvpairs;
   int length;
 };
 typedef struct _kvarray_t kvarray_t;
-
 
 kvarray_t * readKVs(const char * fname);
 
