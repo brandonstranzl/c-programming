@@ -3,4 +3,4 @@ banana=yellow
 orange=orange
 grapes=purple
 carrot=orange
-eggplant=purple
+eggplant=pur=ple
