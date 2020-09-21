@@ -13,15 +13,13 @@ void stripNewline(char * str) {
 kvpair_t * splitPair(char * line){
   kvpair_t * answer = malloc(sizeof(*answer));
   stripNewline(line);
-  char * p = strchr(line, '=');
-  size_t keylen = p - line + 1;
-  answer->key = malloc(keylen*sizeof(answer->key));
-  strncpy(answer->key, line, keylen - 1);
-  answer->key[keylen - 1] = '\0';
-  int valueLength = strchr(line, '\0')-p;
-  answer->value = malloc((valueLength + 1)*sizeof(answer->value));
-  strncpy(answer->value, p + 1, valueLength);
-  answer->value[valueLength + 1] = '\0';
+  char * token = NULL;
+  token = strtok(line, "=");
+  answer->key = token;
+  //while (token != NULL) {
+  token = strtok(NULL,"\0");
+  answer->value = token;
+  //}
   return answer;
 }
 
@@ -32,34 +30,31 @@ kvarray_t * readKVs(const char * fname) {
     return NULL; //Could not open file->indicate failure
   }
   kvarray_t * answer = malloc(sizeof(*answer));
-  if(answer==NULL){
-    return NULL;
-  }
   answer->length = 0;
-  answer->kvpairs = NULL;
+  answer->kvpairs = malloc((answer->length + 1)*(sizeof(*answer->kvpairs)) );
   char * line = NULL;
-  size_t n = 0;
-  size_t length = 0;
+  size_t n;
   while ( getline(&line,&n,f)  >= 0 ) {
-    answer->kvpairs = realloc(answer->kvpairs, (length + 1)*(sizeof(*answer->kvpairs)) );
-    answer->length = length + 1;
-    answer->kvpairs[length] = splitPair(line);
-    length++;
+    answer->kvpairs = realloc(answer->kvpairs, (answer->length + 1)*(sizeof(*answer->kvpairs)) );
+    answer->kvpairs[answer->length] = splitPair(line);
+    line = NULL;
+    answer->length++;
   }
   free(line);
   fclose(f);
   return answer;
+
 }
 
-void freeKVs(kvarray_t * answer) {
+void freeKVs(kvarray_t * pairs) {
   //WRITE ME
-  for (int i = 0; i < answer->length; i++) {
-    free(answer->kvpairs[i]->key);
-    free(answer->kvpairs[i]->value);
-    free(answer->kvpairs[i]);
+  for (int i = 0; i < pairs->length; i++) {
+    free(pairs->kvpairs[i]->key);
+    //free(pairs->kvpairs[i]->value);
+    free(pairs->kvpairs[i]);
   }
-  free(answer->kvpairs);
-  free(answer);
+  free(pairs->kvpairs);
+  free(pairs);
 
 }
 
