@@ -16,7 +16,7 @@ void addCount(counts_t * c, const char * name) {
   char * p;
   if (name == NULL) {
     p = malloc(8*(sizeof(*p)));
-    strcpy(p, "unknown");
+    strcpy(p, "unknown\0");
   }
   else {
     int len = strlen(name);
@@ -48,16 +48,18 @@ void addCount(counts_t * c, const char * name) {
 
 void printCounts(counts_t * c, FILE * outFile) {
 
+  int index = -1;
   for (int i = 0; i < c->size; i++) {
     if (strcmp(c->array[i]->string, "unknown") != 0) {
       fprintf(outFile, "%s: %d\n", c->array[i]->string, c->array[i]->count);
     }
+    else index = i;
   }
-  for (int i = 0; i < c->size; i++) {
-    if (strcmp(c->array[i]->string, "unknown") == 0) {
-      fprintf(outFile, "<%s>: %d\n", c->array[i]->string, c->array[i]->count);
-    }
+
+  if (index != -1) {
+    fprintf(outFile, "<%s> : %d\n", c->array[index]->string, c->array[index]->count);
   }
+
 
 }
 
