@@ -4,6 +4,7 @@
 #include "kv.h"
 
 #define NUM_LOOKUPS 5
+
 int main(void) {
   kvarray_t * array = readKVs("test.txt");
   printf("Printing all keys\n\n");
